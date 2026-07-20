@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project is an end-to-end analysis of the Airbnb Open Data dataset using **Python, SQL, and Tableau**. The goal is to transform raw Airbnb data into meaningful business insights through data cleaning, exploratory data analysis (EDA), SQL-based analysis, and interactive dashboarding.
+This project is an end-to-end analysis of the Airbnb Open Data dataset using **Python and Tableau**. The goal is to transform raw Airbnb data into meaningful business insights through data cleaning, exploratory data analysis (EDA) and interactive dashboarding.
 
 The project demonstrates the complete data analytics workflow, from data preprocessing and visualization to dashboard creation, helping users understand trends in pricing, room types, neighbourhoods, host activity, and listing availability.
 
@@ -15,7 +15,6 @@ The project demonstrates the complete data analytics workflow, from data preproc
 * Perform exploratory data analysis (EDA).
 * Identify pricing trends and neighbourhood patterns.
 * Analyze host activity and listing availability.
-* Answer business questions using SQL.
 * Build an interactive Tableau dashboard.
 * Present actionable insights through visualizations.
 
@@ -36,9 +35,7 @@ The dataset contains information about Airbnb listings, including property detai
 * NumPy
 * Matplotlib
 * Seaborn
-* SQL (MySQL)
 * Tableau
-* Jupyter Notebook
 * Git & GitHub
 
 ---
@@ -49,9 +46,8 @@ The dataset contains information about Airbnb listings, including property detai
 2. Data Cleaning & Preprocessing
 3. Exploratory Data Analysis (EDA)
 4. Data Visualization
-5. SQL Analysis *(Coming Soon)*
-6. Tableau Dashboard *(Coming Soon)*
-7. Business Insights
+5. Tableau Dashboard *(Coming Soon)*
+6. Business Insights
 
 ---
 
@@ -82,11 +78,6 @@ The findings are presented through visualizations including pie charts, bar char
 
 ---
 
-## 🗄️ SQL Analysis *(Coming Soon)*
-
-The SQL section will focus on writing business queries to analyze pricing trends, neighbourhood performance, host activity, and other key metrics using MySQL.
-
----
 
 ## 📊 Tableau Dashboard *(Coming Soon)*
 
@@ -107,10 +98,7 @@ An interactive Tableau dashboard will be developed to visualize key metrics, pri
 
 ## 🚀 Future Enhancements
 
-* Complete SQL-based business analysis.
 * Publish an interactive Tableau dashboard.
-* Build a Power BI dashboard.
-* Develop a machine learning model for price prediction.
 
 ---
 
