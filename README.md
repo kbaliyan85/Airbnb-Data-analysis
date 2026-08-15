@@ -70,6 +70,8 @@ This layer turns the raw analysis into something a manager could open and filter
 
 ### 3. Tableau Dashboard
 
+[🔗 View Interactive Tableau Dashboard](https://public.tableau.com/app/profile/khushi.baliyan/viz/Book3_17868152260770/Dashboard1?publish=yes)
+
 An interactive single-page dashboard (`Airbnb_dashboard_twbx.twb`) combining KPI cards, a geographic map, and multiple chart types for at-a-glance exploration:
 
 - **KPI cards** — headline metrics (listings, average price, ratings) surfaced as text cards
