@@ -106,7 +106,7 @@ The dashboard lets a viewer filter and drill into the same insights from the not
 `Python` · `Pandas` · `NumPy` · `Matplotlib` · `Seaborn` · `Jupyter Notebook` · `Google Sheets (Power Query, XLOOKUP, Dynamic Arrays, PivotTables)` · `Tableau`
 
 ## Author
-'Khushi Baliyan'
+
 
 Khushi Baliyan
 [GitHub](https://github.com/kbaliyan85) · [LinkedIn](https://linkedin.com/in/khushi-baliyan)
