@@ -78,6 +78,10 @@ An interactive single-page dashboard (`Airbnb_dashboard_twbx.twb`) combining KPI
 - **Bar chart** — pricing/volume comparisons across categories
 - **Supporting views** — additional breakdowns for neighbourhood and pricing trends
 
+![Airbnb Dashboard](tableau/dashboard_airbnb.png)
+
+
+
 The dashboard lets a viewer filter and drill into the same insights from the notebook and workbook, but visually and interactively.
 
 ## Key Business Insights
