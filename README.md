@@ -1,110 +1,112 @@
-# 🏡 Airbnb Data Analysis
+# Airbnb Listings Data Analysis (NYC)
 
-## 📌 Project Overview
+End-to-end analysis of ~102,000 Airbnb listings in New York City, exploring what drives pricing, demand, and host behavior. The project was built across three tools, each used for what it's best at: **Python** for cleaning and exploratory analysis, **Advanced Excel** for KPI reporting and pivot-based business analysis, and **Tableau** for an interactive visual dashboard.
 
-This project is an end-to-end analysis of the Airbnb Open Data dataset using **Python and Tableau**. The goal is to transform raw Airbnb data into meaningful business insights through data cleaning, exploratory data analysis (EDA) and interactive dashboarding.
+## Project Overview
 
-The project demonstrates the complete data analytics workflow, from data preprocessing and visualization to dashboard creation, helping users understand trends in pricing, room types, neighbourhoods, host activity, and listing availability.
+Raw Airbnb listing data is messy — inconsistent formatting, missing values, wrong data types, and duplicate records. This project takes that raw data and turns it into a clean, analysis-ready dataset, then answers a core business question:
 
----
+**What factors influence Airbnb listing performance and pricing in NYC?**
 
-## 🎯 Project Objectives
+The same cleaned dataset feeds all three deliverables, so the findings stay consistent whether you're looking at the notebook, the workbook, or the dashboard.
 
-* Clean and preprocess raw Airbnb data.
-* Handle missing values and duplicate records.
-* Perform exploratory data analysis (EDA).
-* Identify pricing trends and neighbourhood patterns.
-* Analyze host activity and listing availability.
-* Build an interactive Tableau dashboard.
-* Present actionable insights through visualizations.
+## Dataset
 
----
+- **Source:** NYC Airbnb Open Data
+- **Size:** ~102,000 listings, 22+ columns
+- **Key fields:** price, service fee, room type, neighbourhood / neighbourhood group, number of reviews, review rate, host details, minimum nights, availability, cancellation policy
 
-## 📂 Dataset
+## Tools & Workflow
 
-**Dataset:** Airbnb Open Data
+### 1. Python (Pandas, NumPy, Matplotlib, Seaborn)
 
-The dataset contains information about Airbnb listings, including property details, host information, room types, neighbourhoods, pricing, reviews, availability, and booking-related attributes.
+Used for data cleaning and exploratory data analysis in `airbnb_analysis.ipynb`.
 
----
+**Data Cleaning**
+- Standardized column names (lowercase, stripped, underscored)
+- Cleaned `price` and `service_fee` columns — stripped `$` and `,` characters, converted to numeric, imputed missing values with the median
+- Filled missing categorical data (`host_name`, `host_identity_verified`) with sensible defaults instead of dropping rows
+- Dropped columns with >50% missing data (`license`, `house_rules`, `reviews_per_month`)
+- Removed duplicate records
+- Corrected data types, including converting `last_review` to datetime
+- Exported the cleaned dataset (`Airbnb_Cleaned.csv`) as the single source of truth for Excel and Tableau
 
-## 🛠️ Technologies Used
+**Exploratory Data Analysis**
+- Distribution of listings by room type
+- Average price by neighbourhood group and by room type
+- Listing volume by neighbourhood group
+- Top 10 hosts by number of listings
+- Correlation heatmap across numeric variables
+- Price distribution by room type (boxplot)
+- Top 10 most expensive neighbourhoods
+- Price vs. number of reviews (scatter plot)
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Tableau
-* Git & GitHub
+**Key Insights from the Notebook**
+- Entire homes/apartments are the most common listing type and also command the highest average prices; shared rooms are the most affordable
+- Listings are concentrated in a handful of neighbourhood groups, showing clear geographic demand patterns
+- Price is right-skewed — most listings are moderately priced, with a smaller number of luxury outliers pulling the average up
+- A small number of hosts manage a disproportionate share of listings, pointing to professional/commercial hosting alongside individual hosts
+- Numeric variables show only weak-to-moderate correlation with price, meaning no single factor drives pricing — it's a mix of location, room type, and listing quality
 
----
+### 2. Advanced Excel/Google Sheets
 
-## 🔄 Project Workflow
+Built a structured, multi-sheet workbook (`AIRBNB_ANALYSIS.xlsx`) on top of the cleaned data, designed to be explored by a non-technical stakeholder.
 
-1. Data Collection
-2. Data Cleaning & Preprocessing
-3. Exploratory Data Analysis (EDA)
-4. Data Visualization
-5. Tableau Dashboard *(Coming Soon)*
-6. Business Insights
+- **`Airbnb_Cleaned`** — the full cleaned dataset (~102K rows), the base layer for every formula and pivot in the workbook
+- **`Power_query`** — data shaped and loaded using Power Query for repeatable transformation
+- **`Analysis`** — a KPI summary and formula-driven business analysis layer, including:
+  - Headline KPIs: total listings, average price, median price, average service fee, average rating, total reviews
+  - **XLOOKUP** to pull metrics dynamically for a selected room type
+  - **Dynamic array formulas** to surface the top 10 highest-priced neighbourhoods on the fly
+- **`pivot_analysis`** — six PivotTables breaking the data down by:
+  1. Pricing by room type
+  2. Neighbourhood group performance (listings, price, reviews, rating)
+  3. Customer engagement by room type (reviews and ratings)
+  4. Cancellation policy vs. pricing
+  5. Price category vs. room type (cross-tab of listing counts)
+  6. Price category vs. neighbourhood group (cross-tab of listing counts)
 
----
+This layer turns the raw analysis into something a manager could open and filter without touching a line of code.
 
-## 🧹 Data Cleaning
+### 3. Tableau Dashboard
 
-The dataset was prepared for analysis by:
+An interactive single-page dashboard (`Airbnb_dashboard_twbx.twb`) combining KPI cards, a geographic map, and multiple chart types for at-a-glance exploration:
 
-* Handling missing values
-* Removing duplicate records
-* Correcting data types
-* Cleaning text fields
-* Converting price-related columns into numeric format
+- **KPI cards** — headline metrics (listings, average price, ratings) surfaced as text cards
+- **Map view** — listings plotted geographically (circle marks) to visualize density and pricing by location across NYC boroughs
+- **Pie chart** — listing share by room type
+- **Bar chart** — pricing/volume comparisons across categories
+- **Supporting views** — additional breakdowns for neighbourhood and pricing trends
 
----
+The dashboard lets a viewer filter and drill into the same insights from the notebook and workbook, but visually and interactively.
 
-## 📊 Exploratory Data Analysis
+## Key Business Insights
 
-The analysis explores key business questions such as:
+| Insight | Detail |
+|---|---|
+| Room type drives price | Entire homes/apartments have the highest average price (~$625); shared rooms are cheapest |
+| Location matters | Neighbourhoods like New Dorp, Chelsea (Staten Island), and Fort Wadsworth top the price rankings, well above the city-wide average |
+| Demand is concentrated | Manhattan and Brooklyn together account for the majority of listings |
+| Hosting is uneven | A small set of hosts manage multiple properties — a sign of professional/commercial activity in the market |
+| Reviews ≠ price | Review count and rating show only weak correlation with price — quality signals don't strongly predict cost |
+| Cancellation policy has minimal price impact | Flexible, moderate, and strict policies show nearly identical average pricing |
 
-* Which room type is the most popular?
-* Which neighbourhood has the highest number of listings?
-* Which neighbourhoods have the highest average prices?
-* How are Airbnb prices distributed?
-* Which hosts manage the most listings?
-* How does listing availability vary throughout the year?
+## Repository Structure
 
-The findings are presented through visualizations including pie charts, bar charts, histograms, box plots, scatter plots, and a correlation heatmap.
+```
+├── airbnb_analysis.ipynb        # Python data cleaning + EDA
+├── Airbnb_Cleaned.csv           # Cleaned dataset (output of the notebook)
+├── AIRBNB_ANALYSIS.xlsx         # Excel/Sheets workbook: KPIs, XLOOKUP, dynamic arrays, PivotTables
+├── Airbnb_dashboard_twbx.twb    # Tableau dashboard
+└── README.md
+```
 
----
+## Tech Stack
 
+`Python` · `Pandas` · `NumPy` · `Matplotlib` · `Seaborn` · `Jupyter Notebook` · `Google Sheets (Power Query, XLOOKUP, Dynamic Arrays, PivotTables)` · `Tableau`
 
-## 📊 Tableau Dashboard *(Coming Soon)*
+## Author
+'Khushi Baliyan'
 
-An interactive Tableau dashboard will be developed to visualize key metrics, pricing trends, room type distribution, neighbourhood analysis, host performance, and listing availability through interactive charts and filters.
-
----
-
-## 💡 Key Insights
-
-* Entire homes/apartments represent the largest share of Airbnb listings.
-* Listing prices vary significantly across neighbourhoods and room types.
-* Premium neighbourhoods have higher average prices.
-* Most listings are moderately priced, with a few luxury properties creating a right-skewed price distribution.
-* A small number of hosts manage multiple listings.
-* Listing availability varies throughout the year.
-
----
-
-## 🚀 Future Enhancements
-
-* Publish an interactive Tableau dashboard.
-
----
-
-## 👩‍💻 Author
-
-**Khushi Baliyan**
-
-Aspiring Data Analyst passionate about using Python, SQL, Tableau, and Business Intelligence tools to solve real-world problems through data.
-
+Khushi Baliyan
+[GitHub](https://github.com/kbaliyan85) · [LinkedIn](https://linkedin.com/in/khushi-baliyan)
